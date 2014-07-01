@@ -1,9 +1,4 @@
-/*
- * ParseConfigFile.hpp
- *
- *  Created on: 03.06.2014
- *      Author: Art
- */
+
 
 #ifndef PARSECONFIGFILE_HPP_
 #define PARSECONFIGFILE_HPP_

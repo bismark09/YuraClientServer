@@ -1,9 +1,4 @@
-/*
- * ParseConfigFile.cpp
- *
- *  Created on: 03.06.2014
- *      Author: Art
- */
+
 #include <ParseConfigFile.hpp>
 
 
