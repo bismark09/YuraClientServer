@@ -1,10 +1,3 @@
-/*
- * ServerPrj.hpp
- *
- *  Created on: 03.06.2014
- *      Author: Art
- */
-
 #ifndef SERVERPRJ_HPP_
 #define SERVERPRJ_HPP_
 

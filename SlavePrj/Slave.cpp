@@ -1,10 +1,3 @@
-/*
- * Slave.cpp
- *
- *  Created on: 29.04.2014
- *      Author: Art
- */
-
 
 
 

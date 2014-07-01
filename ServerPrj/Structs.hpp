@@ -1,9 +1,3 @@
-/*
- * Structs.hpp
- *
- *  Created on: 29.04.2014
- *      Author: Art
- */
 
 #ifndef STRUCTS_HPP_
 #define STRUCTS_HPP_

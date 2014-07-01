@@ -1,9 +1,3 @@
-/*
- * Slave.hpp
- *
- *  Created on: 29.04.2014
- *      Author: Art
- */
 
 #ifndef SLAVE_HPP_
 #define SLAVE_HPP_
