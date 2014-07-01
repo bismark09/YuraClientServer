@@ -5,8 +5,8 @@
 
 typedef struct{
 	double H;
-	double a;
-	double b;
+	double r;
+	double startZ;
 	double kvadrantX;
 	double kvadrantY;
 	double startX;

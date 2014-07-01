@@ -40,12 +40,12 @@ int main(int argc, char *argv[]) {
 	
 	TaskCommonStruct taskStruct;
 	taskStruct.H=1;
-	taskStruct.a=200;
-	taskStruct.b=100;
+	taskStruct.r=100;
+	taskStruct.startZ=0;
 	taskStruct.kvadrantX=+1;
 	taskStruct.kvadrantY=-1;
 	taskStruct.startX=0;
-	taskStruct.startY=taskStruct.b;
+	taskStruct.startY=100;
 	taskStruct.numberOfNeededPoints=5;
 	//taskStruct.rcvid=-1;
 
