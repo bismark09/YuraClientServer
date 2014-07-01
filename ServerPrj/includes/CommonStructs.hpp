@@ -30,6 +30,7 @@ typedef struct{
 typedef  struct{
 	double xResult;
 	double yResult;
+	double zResult;
 } TaskResultPairOfDots;
 
 typedef struct{

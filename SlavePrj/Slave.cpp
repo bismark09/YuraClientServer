@@ -34,16 +34,15 @@ void * Slave(void *argSlaveParam) {
 
 	while (true) {
 		MsgSend(chidTasks,NULL,NULL, &taskStruct, sizeof(TaskCommonStruct));
-		interpolatorImpl.setAllNewParametrs(taskStruct.H, taskStruct.a, taskStruct.b,taskStruct.kvadrantX,taskStruct.kvadrantY,taskStruct.startX, taskStruct.startY);
+		interpolatorImpl.setAllNewParametrs(taskStruct.H, taskStruct.r, taskStruct.startZ,taskStruct.kvadrantX,taskStruct.kvadrantY,taskStruct.startX, taskStruct.startY);
 
 		taskResultCommonStruct.taskResultCommonStructHeader.serverBusy=false;
 		taskResultCommonStruct.taskResultCommonStructHeader.taskID=taskStruct.taskID;
 		taskResultCommonStruct.taskResultPairOfDots=new TaskResultPairOfDots[taskStruct.numberOfNeededPoints];
 
-
 		taskResultCommonStruct.taskResultCommonStructHeader.numberOfDotsCoordinates=0;
 		for(int i=0; i<taskStruct.numberOfNeededPoints; i++){
-			interpolatorImpl.getNextPoint(&taskResultCommonStruct.taskResultPairOfDots[i].xResult, &taskResultCommonStruct.taskResultPairOfDots[i].yResult);
+			interpolatorImpl.getNextPoint(&taskResultCommonStruct.taskResultPairOfDots[i].xResult, &taskResultCommonStruct.taskResultPairOfDots[i].yResult, &taskResultCommonStruct.taskResultPairOfDots[i].zResult);
 			taskResultCommonStruct.taskResultCommonStructHeader.numberOfDotsCoordinates++;
 		}
 
@@ -56,15 +55,12 @@ void * Slave(void *argSlaveParam) {
 
 		iov_t iov[2];
 
-		//int tempSize=sizeof(TaskResultCommonStructHeader);
-		//int tempSize2= sizeof(TaskResultPairOfDots)*taskResultCommonStruct.taskResultCommonStructHeader.numberOfDotsCoordinates;
 		SETIOV(iov+0, &taskResultCommonStruct.taskResultCommonStructHeader, sizeof(TaskResultCommonStructHeader));
 		SETIOV(iov+1, taskResultCommonStruct.taskResultPairOfDots, sizeof(TaskResultPairOfDots)*taskResultCommonStruct.taskResultCommonStructHeader.numberOfDotsCoordinates);
 
 		MsgSendv(chidResults,iov,2, NULL,NULL);
 
 		delete [] taskResultCommonStruct.taskResultPairOfDots;
-
 
 
 	}
