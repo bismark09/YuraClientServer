@@ -18,7 +18,7 @@ InterpolatorImpl::InterpolatorImpl(double H, double r, double startZ,int kvadran
 }
 
 
-void InterpolatorImpl::setAllNewParametrs(double H, double a, double b,int kvadrantX, int kvadrantY, double startX, double startY) {
+void InterpolatorImpl::setAllNewParametrs(double H, double r, double startZ,int kvadrantX, int kvadrantY, double startX, double startY) {
 	this->H=H;
 	this->r=r;
 	U=0;
@@ -40,7 +40,7 @@ void InterpolatorImpl::getNextPoint(double *outX, double *outY, double *outZ) {
 	U=U+2*(X*deltaX+Y*deltaY)+deltaX*deltaX+deltaY*deltaY;
 	X=X+deltaX;
 	Y=Y+deltaY;
-	Z=Z+deltaZ;
+	Z=Z+H;
 
 	double psiX=0;
 	double psiY=0;
