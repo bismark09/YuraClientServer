@@ -68,15 +68,13 @@ int main(int argc, char *argv[]) {
 
 	const char separator    = ' ';
 	const int numWidth      = 10;
-	//std::cout<<taskResultStruct.xVector.size()<<std::endl;
+
+
 	for(int i=0; i<taskStruct.numberOfNeededPoints; i++){
-		//std::cout << std::left<<std::fixed << std::setprecision(3) << std::setw(numWidth) << std::setfill(separator) << taskResultStruct.xVector.back();
-		//std::cout << std::left<< std::fixed << std::setprecision(3) << std::setw(numWidth) << std::setfill(separator) << taskResultStruct.yVector.back();
-		//std::cout << std::endl;
 		std::cout<<"X: "<<taskResultStruct.taskResultPairOfDots[i].xResult<<std::endl;
 		std::cout<<"Y: "<<taskResultStruct.taskResultPairOfDots[i].yResult<<std::endl;
-		//taskResultStruct.xVector.pop_back();
-		//taskResultStruct.yVector.pop_back();
+		std::cout<<"Z: "<<taskResultStruct.taskResultPairOfDots[i].zResult<<std::endl;
+
 	}
 
 	delete[] taskResultStruct.taskResultPairOfDots;

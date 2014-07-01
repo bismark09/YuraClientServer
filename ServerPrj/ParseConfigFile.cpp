@@ -7,6 +7,7 @@ int ParseConfigFile(std::string pathToConfig, ServerConfigs *serverConfigs){
 	if(pathToConfig.length()==0){
 		pathToConfig=std::string(CONFIG_FILE_PATH);
 	}
+	std::cout<<"Path to file: "<<pathToConfig.c_str()<<std::endl;
 	FILE *filePointer = NULL;
 	filePointer = fopen((pathToConfig.c_str()), "r");
 

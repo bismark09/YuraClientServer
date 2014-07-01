@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include <errno.h>
-
+#include <iostream>
 #include "Structs.hpp"
 
 #define CONFIG_FILE_PATH "Server.cfg"

@@ -128,8 +128,15 @@ int main(int argc, char *argv[]) {
 	serverInternalDynamicData.taskResultServerStructFirst= new TaskResultServerStruct;
 	serverInternalDynamicData.taskResultServerStructLastExistingEmpty= serverInternalDynamicData.taskResultServerStructFirst;
 
+	serverConfigs.numberOfSlaves=1;
+	serverConfigs.timeoutNanosec=80000;
+	serverConfigs.quantumNanosec=250000;
+	serverConfigs.maxTaskQueueSize=5;
+	serverConfigs.severInfoFileName="serv.serv";
+	//serverConfigs.timerExceededPeriod=250000;
 
-	/*Open configuration file*/
+
+	/*
 	if(argc>1){
 		if(ParseConfigFile(argv[1],&serverConfigs)==-1){
 			return EXIT_FAILURE;
@@ -140,7 +147,7 @@ int main(int argc, char *argv[]) {
 			return EXIT_FAILURE;
 		}
 	}
-
+	*/
 
 	/*Initialize server - open channel and create threads. Put all necessary info to file*/
 	if(initialize(&serverInternalData,&serverConfigs, &serverInternalDynamicData)==-1){
