@@ -9,23 +9,20 @@ class InterpolatorImpl {
 public:
 	InterpolatorImpl();
 	~InterpolatorImpl();
-	InterpolatorImpl(double H, double a, double b,int kvadrantX, int kvadrantY, double startX, double startY);
-	void setAllNewParametrs(double H, double a, double b,int kvadrantX, int kvadrantY, double startX, double startY);
-	void getNextPoint(double *outX, double *outY );
+	InterpolatorImpl(double H, double r, double startZ,int kvadrantX, int kvadrantY, double startX, double startY);
+	void setAllNewParametrs(double H, double r, double startZ,int kvadrantX, int kvadrantY, double startX, double startY);
+	void getNextPoint(double *outX, double *outY, double *outZ);
 
 private:
 	int H;
-	double a;
-	double b;
-	double k;
-
-	double X;
-	double Y;
-
-	double U;
-
+	double r;
+	double Z;
 	int kvadrantX;
 	int kvadrantY;
+	double X;
+	double Y;
+	double U;
+
 };
 
-#endif /* INTERPOLATORIMPL_H_ */
+#endif

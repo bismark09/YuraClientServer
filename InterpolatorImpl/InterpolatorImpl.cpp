@@ -4,11 +4,9 @@
 InterpolatorImpl::InterpolatorImpl(){
 };
 
-InterpolatorImpl::InterpolatorImpl(double H, double a, double b,int kvadrantX, int kvadrantY, double startX, double startY) {
+InterpolatorImpl::InterpolatorImpl(double H, double r, double startZ,int kvadrantX, int kvadrantY, double startX, double startY) {
 	this->H=H;
-	this->a=a;
-	this->k=b/a;
-
+	this->r=r;
 	U=0;
 
 	this->kvadrantX=kvadrantX;
@@ -16,14 +14,13 @@ InterpolatorImpl::InterpolatorImpl(double H, double a, double b,int kvadrantX, i
 
 	X=startX;
 	Y=startY;
+	Z=startZ;
 }
 
 
 void InterpolatorImpl::setAllNewParametrs(double H, double a, double b,int kvadrantX, int kvadrantY, double startX, double startY) {
 	this->H=H;
-	this->a=a;
-	this->k=a/b;
-
+	this->r=r;
 	U=0;
 
 	this->kvadrantX=kvadrantX;
@@ -31,33 +28,34 @@ void InterpolatorImpl::setAllNewParametrs(double H, double a, double b,int kvadr
 
 	X=startX;
 	Y=startY;
+	Z=startZ;
 }
 
 
 
-void InterpolatorImpl::getNextPoint(double *outX, double *outY) {
-	//Evaluation
-	double deltaX=(kvadrantX*H*Y)/(k*a);
-	double deltaY=(kvadrantY*H*X)/a;
-	U=U+2*(k*k*X*deltaX+Y*deltaY)+k*k*deltaX*deltaX+deltaY*deltaY;
+void InterpolatorImpl::getNextPoint(double *outX, double *outY, double *outZ) {
+
+	double deltaX=(kvadrantX*H*Y)/r;
+	double deltaY=(kvadrantY*H*X)/r;
+	U=U+2*(X*deltaX+Y*deltaY)+deltaX*deltaX+deltaY*deltaY;
 	X=X+deltaX;
 	Y=Y+deltaY;
+	Z=Z+deltaZ;
 
-	//Correction
 	double psiX=0;
 	double psiY=0;
 
 	if(abs(U)>H){
-		double R=sqrt((X*X+Y*Y));
-		double psiR=-U/a;
-		psiX=(psiR*X)/(k*R);
-		psiY=(psiR*Y)/(R);
-		U=U+2*(k*k*X*psiX+Y*psiY)+k*k*psiX*psiX+psiY*psiY;
+		double psiR=-U/r;
+		psiX=(psiR*X)/r;
+		psiY=(psiR*Y)/r;
+		U=U+2*(X*psiX+Y*psiY)+psiX*psiX+psiY*psiY;
 		X=X+psiX;
 		Y=Y+psiY;
 	}
 	*outX=X;
 	*outY=Y;
+	*outZ=Z;
 }
 
 
